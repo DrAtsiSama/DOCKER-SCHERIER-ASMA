@@ -19,6 +19,7 @@ Une fois la commande effectué regardons nos services.
     docker-compose ps
 
 Verifiez que notre service fonctionne en sélectionnant l'IP ou à partir d'un navigateur.
+
 ###Curl à partir de la ligne de commande
     
     ```
