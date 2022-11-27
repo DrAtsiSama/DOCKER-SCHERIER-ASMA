@@ -1,1 +1,35 @@
-# Creation du compose reliant les projets
+# DEFINITION DU DOCKER COMPOSE (3.5 -> DOCKER ENGINE ^17.12.0)
+version: '3.5'
+# DECLARATION DES SERVICES
+services:
+  # PROJET REACT 
+  reactproject:
+    # OUVERTURE DES PORTS MACHINE:IMAGE
+    ports:
+      - "3000:3000"
+    # CHEMIN PERSISTANCE DE DONNEES
+    volumes:
+      - ../../reactproject/:/app
+    # NOM DE L'IMAGE
+    container_name: reactproject
+  # PROJET SYMFONY
+  symfonyprojectdocker:
+    # DEFINITION DES EXIGENCES POUR LE SERVICE DU CONTAINER D'IMAGE
+    build: 
+      # CHEMIN POUR LE DOCKER BUILD
+      context: ../../symfonyprojectdocker/
+      # CHOIX DU FICHIER POUR LE DOCKERFILE
+      dockerfile: Dockerfile
+    # OUVERTURE DES PORTS MACHINE:IMAGE (EXPOSE 80)
+    ports:
+      - "8080:80"
+    # NOM DE L'IMAGE
+    container_name: symfonyproject
+  # MAILDEV
+  # REDIS
+  # MYSQL
+  # PHPMYADMIN
+  # TRAEFIK
+# DEFINITION DES PATHS OU NOM DE VOLUMES ACCESSIBLES PAR LE SERVICE CONTAINERS
+volumes:
+  database:
