@@ -20,7 +20,7 @@ Une fois la commande effectué regardons nos services.
 
 Verifiez que notre service fonctionne en sélectionnant l'IP ou à partir d'un navigateur.
 
-##Curl à partir de la ligne de commande
+### Curl à partir de la ligne de commande
     
     ```
     curl -H Host:whoami.docker.localhost http://127.0.0.1
