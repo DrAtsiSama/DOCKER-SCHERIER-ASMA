@@ -1,7 +1,8 @@
 # ALPINE
 FROM alpine:3.16
+# FROM php:8.1.1-fpm-alpine
 # BASE
-RUN apk update && apk upgrade && apk add --no-cache curl zip unzip && apk add bash && apk --no-cache update 
+RUN apk update && apk upgrade --available && apk add --no-cache curl zip unzip && apk add bash && apk --no-cache update 
 # PHP
 RUN apk add --no-cache php8 \
     php8-cli \ 
@@ -39,8 +40,9 @@ COPY . .
 COPY entrypoint.sh /usr/local/bin/ 
 ## ls /usr/local/bin/ -> composer,entrypoint.sh ##
 # COMMANDES COMPOSER
-RUN composer update && composer install
+RUN composer update
+RUN composer install
 # OUVERTURE DU PORT 80 POUR LE CONTAINER
 EXPOSE 80
 # DEFINITION DU FICHER ENTRYPOINT DE L'IMAGE
-ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
