@@ -42,3 +42,12 @@ Verifiez que notre service fonctionne en sélectionnant l'IP ou à partir d'un n
     ``` 
     
 Il est égalemment possible d'ouvrir le navigateur avec l'URL : `http://whoami.docker.localhost/`
+
+### DOCKER HUB
+
+Creation d'un compte / login sur `https://hub.docker.com/`
+Creation d'un répertoire `https://hub.docker.com/repositories`
+Sur un terminal connectez vous au Docker HUB `docker login`
+Creation d'un tag `docker tag reactproject nomUtilisateur/nomRepertoire`
+Envoie de l'image en ligne `docker push nomUtilisateur/nomRepertoire`
+Vous devrez voir désormais votre image ici `https://hub.docker.com/repository/docker/nomUtilisateur/nomRepertoire`
