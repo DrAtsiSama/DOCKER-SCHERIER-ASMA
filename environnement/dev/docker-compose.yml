@@ -13,7 +13,7 @@ services:
     # NOM DE L'IMAGE
     container_name: reactproject
     # APPEL DE L'IMAGE SUR DOCKER HUB
-    image: dratsisama/dockerproject
+    image: dratsisama:react
   # PROJET SYMFONY
   symfonyprojectdocker:
     # DEFINITION DES EXIGENCES POUR LE SERVICE DU CONTAINER D'IMAGE
@@ -27,6 +27,8 @@ services:
       - "8080:80"
     # NOM DE L'IMAGE
     container_name: symfonyproject
+    # APPEL DE L'IMAGE SUR DOCKER HUB
+    image: dratsisama:symfony
   # MAILDEV
   # REDIS
   # MYSQL

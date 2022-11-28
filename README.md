@@ -51,3 +51,5 @@ Sur un terminal connectez vous au Docker HUB `docker login`
 Creation d'un tag `docker tag reactproject nomUtilisateur/nomRepertoire`
 Envoie de l'image en ligne `docker push nomUtilisateur/nomRepertoire`
 Vous devrez voir désormais votre image ici `https://hub.docker.com/repository/docker/nomUtilisateur/nomRepertoire`
+
+ docker run -it --rm --name container-symfony -p 8080:80 symfony:1

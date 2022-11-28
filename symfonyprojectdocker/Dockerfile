@@ -40,8 +40,7 @@ COPY . .
 COPY entrypoint.sh /usr/local/bin/ 
 ## ls /usr/local/bin/ -> composer,entrypoint.sh ##
 # COMMANDES COMPOSER
-RUN composer update
-RUN composer install
+RUN composer update && composer install
 # OUVERTURE DU PORT 80 POUR LE CONTAINER
 EXPOSE 80
 # DEFINITION DU FICHER ENTRYPOINT DE L'IMAGE
