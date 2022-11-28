@@ -12,6 +12,8 @@ services:
       - ../../reactproject/:/app
     # NOM DE L'IMAGE
     container_name: reactproject
+    # APPEL DE L'IMAGE SUR DOCKER HUB
+    image: dratsisama/dockerproject
   # PROJET SYMFONY
   symfonyprojectdocker:
     # DEFINITION DES EXIGENCES POUR LE SERVICE DU CONTAINER D'IMAGE
