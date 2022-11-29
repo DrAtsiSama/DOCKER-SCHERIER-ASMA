@@ -1,7 +1,20 @@
 # DOCKER-SCHERIER-ASMA
 # Objectifs
-- [ ] Case décochée
-- [x] Case cochée
+- [x] Symfony(Alpine)
+- [x] React  (Alpine)
+- [x] NodeJS 
+- [x] Composer
+- [x] Stocker Image Docker Hub
+- [ ] MYSQL
+- [ ] MailDev
+- [ ] Redis
+- [ ] phpMyAdmin
+- [ ] Traefik
+- [ ] https
+- [ ] autres services
+- [ ] Healthcheck
+- [ ] Image Production
+
 # Installation
 On supposera que [Docker](https://docs.docker.com/installation/) et [Docker Compose](https://docs.docker.com/compose/install/) soient déjà installé sur votre machine. 
 
