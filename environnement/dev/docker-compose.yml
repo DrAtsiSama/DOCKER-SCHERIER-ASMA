@@ -18,7 +18,7 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
-    # NOM DE L'IMAGE
+    # NOM DU CONTAINER
     container_name: reactproject
     # APPEL DE L'IMAGE SUR DOCKER HUB
     image: dratsisama/react
@@ -33,6 +33,9 @@ services:
     # OUVERTURE DES PORTS MACHINE:IMAGE (EXPOSE 80)
     ports:
       - "8080:80"
+    # VA DEPENDRE DE
+    depends_on:
+      - redis
     healthcheck:
       # test: ["CMD-SHELL", "pg_isready"]
       test: curl --fail http://localhost:80 || exit 1
@@ -40,12 +43,28 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
-    # NOM DE L'IMAGE
+    # NOM DU CONTAINER
     container_name: symfonyproject
     # APPEL DE L'IMAGE SUR DOCKER HUB
     image: dratsisama/symfony
   # MAILDEV
   # REDIS
+  redis:
+    # APPEL DE L'IMAGE DE REDIS 7 (persitence cache)
+    image: redis:7
+    # 
+    command: redis-server
+    # REDEMARRER TANT QU'ON NE DEMANDE PAS L'ARRET
+    restart: unless-stopped
+    # NOM DU CONTAINER
+    container_name: redis
+    healthcheck:
+      # redis --raw (Force la sortie de la ligne) incr (increment) ping
+      test: ["CMD", "redis-cli","--raw","incr","ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
   # MYSQL
   mysql:
     image: mysql:8.0
