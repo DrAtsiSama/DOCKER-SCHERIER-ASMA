@@ -45,3 +45,5 @@ RUN composer update && composer install
 EXPOSE 80
 # DEFINITION DU FICHER ENTRYPOINT DE L'IMAGE
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+# 
+# HEALTHCHECK --interval=1m --timeout=30s --retries=3 CMD curl --fail http://localhost:80 || exit 1

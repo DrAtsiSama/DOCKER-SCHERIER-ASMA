@@ -10,10 +10,18 @@ services:
     # CHEMIN PERSISTANCE DE DONNEES
     volumes:
       - ../../reactproject/:/app
+      # 3 etats (STARTING : HEALTHY : UNHEALTHY (ERREUR ou FIN DE PROGRAMME))
+    healthcheck:
+      # test: ["CMD-SHELL", "pg_isready"]
+      test: curl --fail -s http://localhost:3000 || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     # NOM DE L'IMAGE
     container_name: reactproject
     # APPEL DE L'IMAGE SUR DOCKER HUB
-    image: dratsisama:react
+    image: dratsisama/react
   # PROJET SYMFONY
   symfonyprojectdocker:
     # DEFINITION DES EXIGENCES POUR LE SERVICE DU CONTAINER D'IMAGE
@@ -25,14 +33,52 @@ services:
     # OUVERTURE DES PORTS MACHINE:IMAGE (EXPOSE 80)
     ports:
       - "8080:80"
+    healthcheck:
+      # test: ["CMD-SHELL", "pg_isready"]
+      test: curl --fail http://localhost:80 || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
     # NOM DE L'IMAGE
     container_name: symfonyproject
     # APPEL DE L'IMAGE SUR DOCKER HUB
-    image: dratsisama:symfony
+    image: dratsisama/symfony
   # MAILDEV
   # REDIS
   # MYSQL
+  mysql:
+    image: mysql:8.0
+    volumes: 
+      - database:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: esgi
+      MYSQL_USER: esgi
+      MYSQL_PASSWORD: esgi
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-ppass"]
+      interval: 10s
+      retries: 120
   # PHPMYADMIN
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - mysql
+    restart: always
+    ports:
+      - "8030:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: password
+    healthcheck:
+      # test: ["CMD-SHELL", "pg_isready"]
+      test: curl --fail http://localhost:80 || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
   # TRAEFIK
 # DEFINITION DES PATHS OU NOM DE VOLUMES ACCESSIBLES PAR LE SERVICE CONTAINERS
 volumes:
