@@ -47,7 +47,36 @@ services:
     container_name: symfonyproject
     # APPEL DE L'IMAGE SUR DOCKER HUB
     image: dratsisama/symfony
+  # EXPRESS
+  express:
+    build:
+      context: ../../expressdocker/
+      dockerfile: Dockerfile
+    # image: express
+    ports:
+      - 4000:4000
+    container_name: express
+    healthcheck:
+      # test: ["CMD-SHELL", "pg_isready"]
+      test: curl --fail http://localhost:4000 || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
   # MAILDEV
+  maildev:
+    image: djfarrelly/maildev
+    restart: always
+    ports:
+      - "8003:80"
+    container_name: maildev
+    healthcheck:
+      # test: ["CMD-SHELL", "pg_isready"]
+      test: curl --fail http://localhost:8003 || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
   # REDIS
   redis:
     # APPEL DE L'IMAGE DE REDIS 7 (persitence cache)

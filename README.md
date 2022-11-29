@@ -3,10 +3,11 @@
 - [x] Symfony(Alpine)
 - [x] React  (Alpine)
 - [x] NodeJS 
+- [ ] [x] Express
 - [x] Composer
 - [x] Stocker Image Docker Hub
 - [x] MYSQL
-- [ ] MailDev
+- [ ] [x] MailDev
 - [x] Redis
 - [x] phpMyAdmin
 - [ ] Traefik
@@ -73,3 +74,5 @@ Vous devrez voir désormais votre image ici `https://hub.docker.com/repository/d
 docker compose UP
 docker compose DOWN
 docker compose ps
+
+php boitemailtest/test_mail.php   
