@@ -5,14 +5,14 @@
 - [x] NodeJS 
 - [x] Composer
 - [x] Stocker Image Docker Hub
-- [ ] MYSQL
+- [x] MYSQL
 - [ ] MailDev
 - [ ] Redis
-- [ ] phpMyAdmin
+- [x] phpMyAdmin
 - [ ] Traefik
 - [ ] https
 - [ ] autres services
-- [ ] Healthcheck
+- [x] Healthcheck
 - [ ] Image Production
 
 # Installation
