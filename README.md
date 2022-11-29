@@ -7,7 +7,7 @@
 - [x] Stocker Image Docker Hub
 - [x] MYSQL
 - [ ] MailDev
-- [ ] Redis
+- [x] Redis
 - [x] phpMyAdmin
 - [ ] Traefik
 - [ ] https
@@ -70,5 +70,6 @@ Vous devrez voir désormais votre image ici `https://hub.docker.com/repository/d
 
  docker run -it --rm --name container-symfony -p 8080:80 symfony:1
 
- 19bdc2b40c57
- ba8499ad832b
+docker compose UP
+docker compose DOWN
+docker compose ps
