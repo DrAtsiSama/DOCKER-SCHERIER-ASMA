@@ -1,4 +1,7 @@
 # DOCKER-SCHERIER-ASMA
+# Objectifs
+- [ ] Case décochée
+- [x] Case cochée
 # Installation
 On supposera que [Docker](https://docs.docker.com/installation/) et [Docker Compose](https://docs.docker.com/compose/install/) soient déjà installé sur votre machine. 
 
@@ -53,3 +56,6 @@ Envoie de l'image en ligne `docker push nomUtilisateur/nomRepertoire`
 Vous devrez voir désormais votre image ici `https://hub.docker.com/repository/docker/nomUtilisateur/nomRepertoire`
 
  docker run -it --rm --name container-symfony -p 8080:80 symfony:1
+
+ 19bdc2b40c57
+ ba8499ad832b
